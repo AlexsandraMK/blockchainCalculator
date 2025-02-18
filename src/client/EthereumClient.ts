@@ -39,6 +39,21 @@ class EthereumClient {
       throw new EthereumError("Не удалось создать контракт");
     }
   };
+
+  getTransactionNonceAsync = async (
+    provider: ethers.Provider,
+    wallet: ethers.Wallet
+  ) => {
+    try {
+      const nonce = await provider.getTransactionCount(
+        wallet.address,
+        "latest"
+      );
+      return nonce;
+    } catch (error) {
+      throw new EthereumError("Не удалось получить nonce");
+    }
+  };
 }
 
 const ethereumClient = new EthereumClient();

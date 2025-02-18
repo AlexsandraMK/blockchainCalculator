@@ -1,7 +1,8 @@
-import contract from "../contract/calculatorContract";
+import { contract, provider, wallet } from "../contract/calculatorContract";
 import { OperationEnum } from "../enum/OperationEnum";
 import EthereumError from "../error/EthereumError";
 import NullPointerError from "../error/NullPointerError";
+import ethereumClient from "../client/EthereumClient";
 
 class CalculatorService {
   calcAsync = async (
@@ -14,8 +15,20 @@ class CalculatorService {
     }
 
     try {
-      await contract.setFirstValue(firstValue);
-      await contract.setSecondValue(secondValue);
+      const nonce = await ethereumClient.getTransactionNonceAsync(
+        provider,
+        wallet
+      );
+
+      const [setFirstTransaction, setSecondTransaction] = await Promise.all([
+        contract.setFirstValue(firstValue, { nonce }), 
+        contract.setSecondValue(secondValue, { nonce: nonce + 1 }), 
+      ]);
+
+      await Promise.all([
+        setFirstTransaction.wait(),
+        setSecondTransaction.wait(),
+      ]);
 
       let result = 0;
       switch (operation) {
