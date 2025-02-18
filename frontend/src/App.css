@@ -1,0 +1,51 @@
+.main-div {
+  width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.button-panel div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.input-panel {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+input {
+  font-size: 1em;
+}
+
+.calc-button {
+  grid-row: span 2;
+}
+
+.calc-button .to-click {
+  background-color: red;
+}
