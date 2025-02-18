@@ -30,58 +30,41 @@ export const calculatorABI: ethers.Interface | ethers.InterfaceAbi = [
   {
     inputs: [],
     name: "add",
-    outputs: [
-      {
-        internalType: "int16",
-        name: "",
-        type: "int16",
-      },
-    ],
-    stateMutability: "view",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
     name: "subtract",
-    outputs: [
-      {
-        internalType: "int16",
-        name: "",
-        type: "int16",
-      },
-    ],
-    stateMutability: "view",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
     name: "multiply",
-    outputs: [
-      {
-        internalType: "int16",
-        name: "",
-        type: "int16",
-      },
-    ],
-    stateMutability: "view",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
     name: "divide",
-    outputs: [
-      {
-        internalType: "int16",
-        name: "",
-        type: "int16",
-      },
-    ],
-    stateMutability: "view",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
     name: "power",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getResult",
     outputs: [
       {
         internalType: "int16",

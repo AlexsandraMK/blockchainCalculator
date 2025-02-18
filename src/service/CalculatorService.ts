@@ -21,8 +21,8 @@ class CalculatorService {
       );
 
       const [setFirstTransaction, setSecondTransaction] = await Promise.all([
-        contract.setFirstValue(firstValue, { nonce }), 
-        contract.setSecondValue(secondValue, { nonce: nonce + 1 }), 
+        contract.setFirstValue(firstValue, { nonce }),
+        contract.setSecondValue(secondValue, { nonce: nonce + 1 }),
       ]);
 
       await Promise.all([
@@ -30,24 +30,28 @@ class CalculatorService {
         setSecondTransaction.wait(),
       ]);
 
-      let result = 0;
+      let calcTransaction;
       switch (operation) {
         case OperationEnum.add:
-          result = await contract.add();
+          calcTransaction = await contract.add();
           break;
         case OperationEnum.subtract:
-          result = await contract.subtract();
+          calcTransaction = await contract.subtract();
           break;
         case OperationEnum.multiply:
-          result = await contract.multiply();
+          calcTransaction = await contract.multiply();
           break;
         case OperationEnum.divide:
-          result = await contract.divide();
+          calcTransaction = await contract.divide();
           break;
         case OperationEnum.power:
-          result = await contract.power();
+          calcTransaction = await contract.power();
           break;
       }
+
+      await calcTransaction.wait();
+
+      const result = await contract.getResult();
 
       return Number(result);
     } catch (error) {
