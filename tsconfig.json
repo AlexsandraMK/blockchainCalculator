@@ -8,12 +8,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./backend/src",
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
     "strictNullChecks": true
   },
-  "include": ["src/**/*"],
+  "include": ["./backend/src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

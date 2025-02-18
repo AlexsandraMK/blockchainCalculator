@@ -10,10 +10,14 @@ import calculatorRouter from "./rest/CalculatorRest";
 
 server.use(calculatorRouter);
 
-server.use(express.static(path.join(__dirname, "../", "frontend", "build")));
+server.use(
+  express.static(path.join(__dirname, "../", "../", "frontend", "build"))
+);
 
 server.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "../", "frontend", "build", "index.html"));
+  res.sendFile(
+    path.join(__dirname, "../", "../", "frontend", "build", "index.html")
+  );
 });
 
 // Запуск сервера
