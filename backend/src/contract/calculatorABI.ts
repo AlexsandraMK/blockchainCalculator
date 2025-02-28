@@ -5,11 +5,16 @@ export const calculatorABI: ethers.Interface | ethers.InterfaceAbi = [
     inputs: [
       {
         internalType: "int16",
-        name: "value",
+        name: "firstValue",
+        type: "int16",
+      },
+      {
+        internalType: "int16",
+        name: "secondValue",
         type: "int16",
       },
     ],
-    name: "setFirstValue",
+    name: "add",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -18,45 +23,69 @@ export const calculatorABI: ethers.Interface | ethers.InterfaceAbi = [
     inputs: [
       {
         internalType: "int16",
-        name: "value",
+        name: "firstValue",
+        type: "int16",
+      },
+      {
+        internalType: "int16",
+        name: "secondValue",
         type: "int16",
       },
     ],
-    name: "setSecondValue",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "add",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "subtract",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "int16",
+        name: "firstValue",
+        type: "int16",
+      },
+      {
+        internalType: "int16",
+        name: "secondValue",
+        type: "int16",
+      },
+    ],
     name: "multiply",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "int16",
+        name: "firstValue",
+        type: "int16",
+      },
+      {
+        internalType: "int16",
+        name: "secondValue",
+        type: "int16",
+      },
+    ],
     name: "divide",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "int16",
+        name: "firstValue",
+        type: "int16",
+      },
+      {
+        internalType: "int16",
+        name: "secondValue",
+        type: "int16",
+      },
+    ],
     name: "power",
     outputs: [],
     stateMutability: "nonpayable",

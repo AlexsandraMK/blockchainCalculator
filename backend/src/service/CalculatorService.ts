@@ -1,8 +1,7 @@
-import { contract, provider, wallet } from "../contract/calculatorContract";
+import { contract } from "../contract/calculatorContract";
 import { OperationEnum } from "../enum/OperationEnum";
 import EthereumError from "../error/EthereumError";
 import NullPointerError from "../error/NullPointerError";
-import ethereumClient from "../client/EthereumClient";
 
 class CalculatorService {
   calcAsync = async (
@@ -15,37 +14,22 @@ class CalculatorService {
     }
 
     try {
-      const nonce = await ethereumClient.getTransactionNonceAsync(
-        provider,
-        wallet
-      );
-
-      const [setFirstTransaction, setSecondTransaction] = await Promise.all([
-        contract.setFirstValue(firstValue, { nonce }),
-        contract.setSecondValue(secondValue, { nonce: nonce + 1 }),
-      ]);
-
-      await Promise.all([
-        setFirstTransaction.wait(),
-        setSecondTransaction.wait(),
-      ]);
-
       let calcTransaction;
       switch (operation) {
         case OperationEnum.add:
-          calcTransaction = await contract.add();
+          calcTransaction = await contract.add(firstValue, secondValue);
           break;
         case OperationEnum.subtract:
-          calcTransaction = await contract.subtract();
+          calcTransaction = await contract.subtract(firstValue, secondValue);
           break;
         case OperationEnum.multiply:
-          calcTransaction = await contract.multiply();
+          calcTransaction = await contract.multiply(firstValue, secondValue);
           break;
         case OperationEnum.divide:
-          calcTransaction = await contract.divide();
+          calcTransaction = await contract.divide(firstValue, secondValue);
           break;
         case OperationEnum.power:
-          calcTransaction = await contract.power();
+          calcTransaction = await contract.power(firstValue, secondValue);
           break;
       }
 
